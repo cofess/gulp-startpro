@@ -1,6 +1,8 @@
-var gulp        = require('gulp');
-var changed     = require('gulp-changed');
-var config      = require('../../config').images;
+var gulp          = require('gulp')
+var changed       = require('gulp-changed')
+var config        = require('../../config').images
+
+if (!config) return
 
 /**
  * Copy images to build folder

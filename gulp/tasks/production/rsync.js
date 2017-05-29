@@ -1,6 +1,8 @@
-var gulp   = require('gulp');
-var rsync  = require('gulp-rsync');
-var config = require('../../config').rsync;
+var gulp        = require('gulp')
+var rsync       = require('gulp-rsync')
+var config      = require('../../config').rsync
+
+if (!config) return
 
 /**
  * Copy files and folder to server

@@ -1,6 +1,8 @@
-var gulp      = require('gulp');
-var size      = require('gulp-size');
-var config    = require('../../config').optimize.css;
+var gulp          = require('gulp')
+var size          = require('gulp-size')
+var config        = require('../../config').optimize.css
+
+if (!config) return
 
 /**
  * Copy CSS files

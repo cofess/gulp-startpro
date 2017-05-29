@@ -214,7 +214,7 @@ module.exports = {
       }
     }
   },
-  revision: {
+  rev: {
     src: {
       assets: [
         productionAssets + '/css/*.css',

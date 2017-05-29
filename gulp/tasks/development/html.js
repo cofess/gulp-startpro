@@ -1,13 +1,14 @@
 "use strict";
 
-var config  = require('../../config').html;
+var fs             = require('fs')
+var path           = require('path')
+var browserSync    = require('browser-sync')
+var gulp           = require('gulp')
+var data           = require('gulp-data')
+var render         = require('gulp-nunjucks-render')
+var config         = require('../../config').html
 
-var fs           = require('fs')
-var path         = require('path')
-var browserSync  = require('browser-sync')
-var gulp         = require('gulp')
-
-if(!config) return
+if (!config) return
 
 var exclude = path.normalize('!**/{' + config.excludeFolders.join(',') + '}/**')
 
@@ -23,6 +24,13 @@ var getData = function(file) {
 
 var htmlTask = function() {
   return gulp.src(paths.src)
+    .pipe(data(getData))
+    .pipe(render({
+      path: config.src,
+      envOptions: {
+        watch: false
+      }
+    }))
     .pipe(gulp.dest(paths.dest))
     .on('end', browserSync.reload)
 }

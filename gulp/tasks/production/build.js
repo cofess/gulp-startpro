@@ -1,5 +1,5 @@
-var gulp        = require('gulp');
-var runSequence = require('run-sequence');
+var gulp           = require('gulp')
+var runSequence    = require('run-sequence')
 
 /**
  * Run all tasks needed for a build in defined order
@@ -20,7 +20,7 @@ var runSequence = require('run-sequence');
 //     'optimize:html',
 //     'copy:fonts:production'
 //   ],
-//   'revision',
+//   'rev',
 //   'rev:collect',
 //   [
 //     'webp',
@@ -28,28 +28,25 @@ var runSequence = require('run-sequence');
 //   ],
 //   callback);
 // });
-// 
+
 gulp.task('build:production', function(callback) {
-  runSequence('delete', 
-  [
-    'styles',
-    'scripts',
-    'images',
-    'copy:fonts'
-  ],
-  'base64',
-  [
-    'optimize:css',
-    'optimize:js',
-    'optimize:images',
-    'optimize:html',
-    'copy:fonts:production'
-  ],
-  'revision',
-  'rev:collect',
-  [
-    'webp',
-    'gzip'
-  ],
-  callback);
+  runSequence('delete', [
+      'styles',
+      'scripts',
+      'images',
+      'copy:fonts'
+    ],
+    'base64', [
+      'optimize:css',
+      'optimize:js',
+      'optimize:images',
+      'optimize:html',
+      'copy:fonts:production'
+    ],
+    'rev',
+    'rev:collect', [
+      // 'webp', //有点小问题，依赖系统WIC图像处理组件
+      'gzip'
+    ],
+    callback);
 });

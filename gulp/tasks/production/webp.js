@@ -1,6 +1,8 @@
-var gulp   = require('gulp');
-var webp   = require('gulp-webp');
-var config = require('../../config').webp;
+var gulp          = require('gulp')
+var webp          = require('gulp-webp')
+var config        = require('../../config').webp
+
+if (!config) return
 
 /**
  * Convert images to WebP
