@@ -11,5 +11,5 @@ if (!config) return
 gulp.task('jshint', function() {
   return gulp.src(config.src)
     .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+    .pipe(jshint.reporter(stylish, {beep: true}));
 });

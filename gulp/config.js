@@ -1,13 +1,15 @@
-var src               = 'app';
+var src               = 'app'; //源代码目录
 var static            = 'app/_static';
-var build             = 'build';
+var build             = 'build'; //构建目录
 var development       = 'build/development';
 var production        = 'build/production';
 var srcAssets         = 'app/_assets';
 var developmentAssets = 'build/assets';
 var productionAssets  = 'build/production/assets';
 
+//gulp 任务配置
 module.exports = {
+  //本地服务器
   browsersync: {
     development: {
       server: {
@@ -28,6 +30,7 @@ module.exports = {
       port: 9998
     }
   },
+  //是否开启调试
   debug: {
     state: true,
     options: {
@@ -39,6 +42,7 @@ module.exports = {
       // format: '>' + chalk.yellow('%s')
     }
   },
+  //清空构建目录
   delete: {
     src: [developmentAssets]
   },
@@ -47,6 +51,12 @@ module.exports = {
       developmentAssets + '/css/*.css',
       developmentAssets + '/js/*.js',
     ],
+    options: {
+      gzip: true,
+      '*': {
+        'maxSize': 100000
+      },
+    }
   },
   static: {
     src: static,
@@ -137,6 +147,7 @@ module.exports = {
       outputName: 'head.js'
     }]
   },
+  //JS代码校验
   jshint: {
     src: srcAssets + '/javascripts/*.js'
   },
