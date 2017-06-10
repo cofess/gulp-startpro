@@ -6,6 +6,7 @@ var plumber        = require('gulp-plumber')
 var gutil          = require('gulp-util')
 var browsersync    = require('browser-sync')
 // var autoprefixer   = require('autoprefixer')
+var size           = require('gulp-size')
 var rename         = require('gulp-rename')
 var config         = require('../../config').styles
 
@@ -28,5 +29,6 @@ gulp.task('styles-min', function () {
     .pipe(minify(config.options.minify))
     // .pipe(sourcemaps.write('.'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(size())
 });

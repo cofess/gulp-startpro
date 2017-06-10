@@ -159,6 +159,15 @@ module.exports = {
       outputName: 'head.js'
     }]
   },
+  js: {
+    src: srcAssets + '/javascripts/*.js',
+    dest: developmentAssets + '/js/',
+    options: {
+      uglify: {
+
+      }
+    }
+  },
   //JS代码校验
   jshint: {
     src: srcAssets + '/javascripts/*.js'
