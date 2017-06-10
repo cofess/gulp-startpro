@@ -6,7 +6,7 @@ var config         = require('../../config').lintStyles
 
 if (!config) return
 
-gulp.task('lint-styles', function() {
+gulp.task('styles-lint', function() {
   return gulp.src(config.src)
     .pipe(postcss([
       stylelint(config.options.stylelint),

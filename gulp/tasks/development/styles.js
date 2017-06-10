@@ -1,7 +1,7 @@
 var gulp           = require('gulp')
 var postcss        = require('gulp-postcss')
 var precss         = require('precss')
-var nano           = require('gulp-cssnano')
+var minify         = require('gulp-clean-css')
 var plumber        = require('gulp-plumber')
 var sourcemaps     = require('gulp-sourcemaps')
 var gutil          = require('gulp-util')
@@ -37,7 +37,7 @@ gulp.task('styles', function () {
     }))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
-    .pipe(nano())
+    .pipe(minify(config.options.clean))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.dest));
 });
