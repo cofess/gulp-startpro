@@ -118,7 +118,7 @@ module.exports = {
       mqpacker: {}
     }
   },
-  lintStyles: {
+  csslint: {
     src: [
       srcAssets + '/styles/**/*.css',
       '!' + srcAssets + '/styles/partials/_syntax-highlighting.css',

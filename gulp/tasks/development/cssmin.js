@@ -18,7 +18,7 @@ function onError (err) {
   this.emit('end');
 }
 
-gulp.task('styles-min', function () {
+gulp.task('cssmin', function () {
   browsersync.notify('Transforming CSS with CSS Minify');
 
   return gulp.src([path.join(config.dest,'/*.css'),'!'+config.dest+'/*.min.css'])

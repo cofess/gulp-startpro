@@ -12,7 +12,7 @@ if (!config) return
 /**
  * Copy and minimize JS files
  */
-gulp.task('js-min', function() {
+gulp.task('jsmin', function() {
   return gulp.src([path.join(config.dest,'/*.js'),'!'+config.dest+'/*.min.js'])
   	.pipe(sourcemaps.init())
     .pipe(uglify(config.options.uglify))
