@@ -6,7 +6,7 @@ var plumber        = require('gulp-plumber')
 var sourcemaps     = require('gulp-sourcemaps')
 var gutil          = require('gulp-util')
 var browsersync    = require('browser-sync')
-var autoprefixer   = require('autoprefixer')
+var autoprefixer   = require('gulp-autoprefixer')
 var mqpacker       = require('css-mqpacker') //Pack same CSS media query rules into one using PostCSS
 var config         = require('../../config').styles
 
@@ -24,7 +24,6 @@ function onError (err) {
  */
 var processors = [
   precss(config.options.precss),
-  autoprefixer(config.options.autoprefixer),
   mqpacker(config.options.mqpacker)
 ];
 
@@ -37,6 +36,7 @@ gulp.task('styles', function () {
     }))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
+    .pipe(autoprefixer(config.options.autoprefixer))
     .pipe(minify(config.options.clean))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.dest));
